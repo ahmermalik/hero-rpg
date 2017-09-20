@@ -6,6 +6,8 @@
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
 
+
+class 
 class Hero:
     def __init__(self, health, power):
         self.health = health
@@ -13,23 +15,40 @@ class Hero:
 
     def attack(self, enemy):
         enemy.health -= self.power
-        print("You do {} haha damage to the goblin.".format(self.power))
+        print("You do {} SUPER-DUPER damage to the goblin.".format(self.power))
 
+    def alive(self):
+        if self.health > 0:
+            return True
+    def print_status(self):
+        print("You have {} health and {} power.".format(self.health, self.power))
 
 class Goblin:
     def __init__(self, health, power):
         self.health = health
         self.power = power
 
+    def attack(self, enemy):
+        enemy.health -= self.power
+        print("The goblin does {} damage to you.".format(self.power))
+
+    def alive(self):
+        if self.health > 0:
+            return True
+
+    def print_status(self):
+        print("The goblin has {} health and {} power.\n".format(self.health, self.power))
+
 
 def main():
     hero = Hero(10, 5)
     goblin = Goblin(6, 2)
-    while goblin.health > 0 and hero.health > 0:
-        print("You have {} health and {} power.".format(hero.health, hero.power))
-        print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
-        print()
-        print("What do you want to do?")
+    while goblin.alive() and hero.alive():
+
+        hero.print_status()
+        goblin.print_status()
+
+        print("What do you want to do?\n")
         print("1. fight goblin")
         print("2. do nothing")
         print("3. flee")
@@ -51,9 +70,9 @@ def main():
 
         if goblin.health > 0:
             # Goblin attacks hero
-            hero.health -= goblin.power
-            print("The goblin does {} damage to you.".format(goblin.power))
-            if hero.health <= 0:
-                print("You are dead.")
+            goblin.attack(hero)
+
+        if hero.health <= 0:
+            print("You are dead.")
 
 main()
