@@ -7,7 +7,7 @@
 # 3. flee
 
 
-class 
+class
 class Hero:
     def __init__(self, health, power):
         self.health = health
