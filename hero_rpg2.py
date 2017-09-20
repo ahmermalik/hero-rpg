@@ -7,11 +7,15 @@
 # 3. flee
 
 
-class
-class Hero:
-    def __init__(self, health, power):
+class Character:
+    def __init__(self, name, health, power):
+        self.name = name
         self.health = health
         self.power = power
+
+class Hero(Character):
+    def __init__(self, name = "Hero", health, power):
+        super().__init__(name, health, power)
 
     def attack(self, enemy):
         enemy.health -= self.power
@@ -23,10 +27,10 @@ class Hero:
     def print_status(self):
         print("You have {} health and {} power.".format(self.health, self.power))
 
-class Goblin:
-    def __init__(self, health, power):
-        self.health = health
-        self.power = power
+class Goblin(Character):
+    def __init__(self, name ="Goblin", health, power):
+        super().__init__(name, health, power)
+
 
     def attack(self, enemy):
         enemy.health -= self.power
