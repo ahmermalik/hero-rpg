@@ -6,6 +6,8 @@
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
 
+#4. This is a test.
+
 def main():
     hero_health = 10
     hero_power = 5
