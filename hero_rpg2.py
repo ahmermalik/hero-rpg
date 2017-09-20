@@ -13,35 +13,25 @@ class Character:
         self.health = health
         self.power = power
 
-class Hero(Character):
-    def __init__(self, name = "Hero", health, power):
-        super().__init__(name, health, power)
-
     def attack(self, enemy):
         enemy.health -= self.power
-        print("You do {} SUPER-DUPER damage to the goblin.".format(self.power))
+        print("{} do {} SUPER-DUPER damage to the {}.".format(self.name, self.power, enemy.name))
 
     def alive(self):
         if self.health > 0:
             return True
+
     def print_status(self):
-        print("You have {} health and {} power.".format(self.health, self.power))
+        print("{} have {} health and {} power.".format(self.name, self.health, self.power))
+
+class Hero(Character):
+    def __init__(self, health, power, name="Hero"):
+        super().__init__(name, health, power)
+
 
 class Goblin(Character):
-    def __init__(self, name ="Goblin", health, power):
+    def __init__(self, health, power, name="Goblin"):
         super().__init__(name, health, power)
-
-
-    def attack(self, enemy):
-        enemy.health -= self.power
-        print("The goblin does {} damage to you.".format(self.power))
-
-    def alive(self):
-        if self.health > 0:
-            return True
-
-    def print_status(self):
-        print("The goblin has {} health and {} power.\n".format(self.health, self.power))
 
 
 def main():
