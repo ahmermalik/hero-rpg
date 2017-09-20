@@ -14,49 +14,59 @@ class Character:
         self.power = power
 
     def attack(self, enemy):
+        if enemy.health <= 0:
+            return
+
         enemy.health -= self.power
-        print("{} do {} SUPER-DUPER damage to the {}.".format(self.name, self.power, enemy.name))
+        print("{} did {} SUPER-DUPER damage to the {}.\n".format(self.name, self.power, enemy.name))
 
     def alive(self):
         if self.health > 0:
             return True
 
     def print_status(self):
-        print("{} have {} health and {} power.".format(self.name, self.health, self.power))
+        print("{} has {} health and {} power.\n".format(self.name, self.health, self.power))
 
 class Hero(Character):
-    def __init__(self, health, power, name="Hero"):
-        super().__init__(name, health, power)
 
+    pass
 
 class Goblin(Character):
-    def __init__(self, health, power, name="Goblin"):
-        super().__init__(name, health, power)
+
+    pass
+class Zambie(Character):
+
+    pass
 
 
 def main():
-    hero = Hero(10, 5)
-    goblin = Goblin(6, 2)
+    hero = Hero('Hero', 10, 5)
+    goblin = Goblin('Gobblez',6, 2)
+    zambie = Zambie('Mr.Zambie',9000,9000)
     while goblin.alive() and hero.alive():
 
         hero.print_status()
         goblin.print_status()
 
-        print("What do you want to do?\n")
+        print("What do you want to do?")
         print("1. fight goblin")
-        print("2. do nothing")
-        print("3. flee")
+        print("2. fight zambie")
+        print("3. do nothing")
+        print("4. flee")
         print("> ", end=' ')
         raw_input = input()
         if raw_input == "1":
             # Hero attacks goblin
             hero.attack(goblin)
-            print("You do {} damage to the goblin.".format(hero.power))
             if goblin.health <= 0:
                 print("The goblin is dead.")
         elif raw_input == "2":
-            pass
+            zambie.attack(hero)
+
         elif raw_input == "3":
+            pass
+
+        elif raw_input=="4":
             print("Goodbye.")
             break
         else:
