@@ -42,7 +42,7 @@ class Zambie(Character):
 def main():
     hero = Hero('Hero', 10, 5)
     goblin = Goblin('Gobblez',6, 2)
-    zambie = Zambie('Mr.Zambie',9000,9000)
+    zambie = Zambie('Mr.Zambie',9001,9001)
     while goblin.alive() and hero.alive():
 
         hero.print_status()
